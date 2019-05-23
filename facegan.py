@@ -98,7 +98,7 @@ class DCGAN:
             batch_Z = np.random.uniform(-1,1,(self.batch_size,self.z_shape))
 
             #Train D and store dc loss
-            batch_X = batch_X.reshape([-1,28,28,1])
+            batch_X = batch_X.reshape([-1,28,28,self.channels])
             _, d_loss = self.sess.run([self.dc_train,self.dc_loss],feed_dict={self.phX:batch_X,self.phZ:batch_Z})
 
             #Create new batch for G
