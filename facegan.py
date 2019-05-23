@@ -9,7 +9,7 @@ from keras.preprocessing import image
 
 
 class DCGAN:
-    def __init__(self, img_shape, sample_folder_name, iterations=15000, lr_gen=0.0001, lr_dc=0.0003, z_shape=100, batch_size=64, beta1=0.2, sample_interval=500):
+    def __init__(self, img_shape, sample_folder_name, iterations=15500, lr_gen=0.0001, lr_dc=0.00005, z_shape=100, batch_size=128 , beta1=0.2, sample_interval=500):
 
         #Create sample folder
         if not os.path.exists(f"{sample_folder_name}/"):
@@ -129,7 +129,7 @@ class DCGAN:
         count = 0
         for i in range(c):
             for j in range(r):
-                axs[i,j].imshow(imgs[count,:,:,0],cmap="gray")
+                axs[i,j].imshow(imgs[count,:,:,0])
                 axs[i,j].axis('off')
                 count += 1
 
