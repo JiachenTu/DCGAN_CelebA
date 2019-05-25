@@ -116,7 +116,9 @@ class DCGAN:
 
     def generate_sample(self, iteration):
         # 5 samples per IMG
-        c,r = 5,5
+        c,r = 5, 5
+
+
         # New input for sample, 5*5 = 25 IMGs
         z = np.random.uniform(-1,1,(25,self.z_shape))
         imgs = self.sess.run(self.gen_out, feed_dict={self.phZ:z})
