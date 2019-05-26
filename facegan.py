@@ -6,6 +6,7 @@ import os
 from generator import Generator
 from discriminator import Discriminator
 from keras.preprocessing import image
+import cv2
 
 
 class DCGAN:
@@ -126,6 +127,8 @@ class DCGAN:
 
         #Scale back to values (0,1), currently (-1,1)
         imgs = imgs*0.5+0.5
+
+        imgs = cv2.cvtColor(imgs, cv2.COLOR_BGR2RGB)
 
         fig,axs = plt.subplots(c,r)
         count = 0

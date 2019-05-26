@@ -4,14 +4,12 @@ from ops import *
 from tensorflow.layers import batch_normalization
 
 
-from keras.layers import Input, Activation, Add, UpSampling2D
+from keras.layers import Activation
 from keras.layers.advanced_activations import LeakyReLU
 from keras.layers.convolutional import Conv2D
-from keras.layers.core import Dense, Flatten, Lambda
+from keras.layers.core import Dense, Flatten
 from keras.layers.normalization import BatchNormalization
-from keras.models import Model
 
-from layer_utils import ReflectionPadding2D, res_block
 
 
 class Discriminator:
@@ -37,7 +35,7 @@ class Discriminator:
 
 
     def forward(self, X, momentum=0.5):
-        n_layers, use_sigmoid = 3, False
+        n_layers, use_sigmoid = 6, False
         ndf = 64
         x = Conv2D(filters=ndf, kernel_size=(4, 4), strides=2, padding='same')(X)
         x = LeakyReLU(0.2)(x)
@@ -66,6 +64,7 @@ class Discriminator:
         return logits
 
 
+    ###simpler DisCriminator
     def forward2(self, X, momentum=0.5):
         # 1th layer
         z = conv2d(X,self.W1,[1,2,2,1],padding="SAME")  #Size 14,14,64
